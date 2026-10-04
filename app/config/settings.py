@@ -12,13 +12,10 @@ _file_values = dotenv_values(env_path) if env_path.exists() else {}
 DATA_DIR = BASE_DIR / "data"
 TRANSCRIPTS_DIR = DATA_DIR / "transcripts"
 LOGS_DIR = BASE_DIR / "logs"
-BROWSER_DIR = BASE_DIR / "browser"
-BROWSER_PROFILE_DIR = BROWSER_DIR / "profile"
 
 # Ensure directories exist
 TRANSCRIPTS_DIR.mkdir(parents=True, exist_ok=True)
 LOGS_DIR.mkdir(parents=True, exist_ok=True)
-BROWSER_PROFILE_DIR.mkdir(parents=True, exist_ok=True)
 
 
 def _get_conf(key: str, fallback_key: str = "", default: str = "") -> str:
@@ -41,11 +38,6 @@ class Settings:
     GRADIO_SERVER_NAME: str = os.getenv("GRADIO_SERVER_NAME", "127.0.0.1").strip()
     GRADIO_SERVER_PORT: int = int(os.getenv("GRADIO_SERVER_PORT", "7860"))
 
-    # Playwright browser automation
-    PLAYWRIGHT_HEADLESS: bool = (
-        os.getenv("PLAYWRIGHT_HEADLESS", "false").lower() in ("true", "1", "yes")
-    )
-    BROWSER_PROFILE_DIR: Path = BROWSER_PROFILE_DIR
     TRANSCRIPTS_DIR: Path = TRANSCRIPTS_DIR
     LOGS_DIR: Path = LOGS_DIR
     DATA_DIR: Path = DATA_DIR

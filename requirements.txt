@@ -1,0 +1,6 @@
+google-api-python-client>=2.201.0
+gradio>=6.29.1
+httpx>=0.28.1
+pydantic>=2.13.5
+python-dotenv>=1.2.4
+youtube-transcript-api>=1.2.4
